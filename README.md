@@ -10,20 +10,21 @@ We share COCO style json file, and Pascal style csv file.
 [CSV](https://drive.google.com/open?id=1i12p23cXlqp1QrXjAD_vu467r4q67Mq9)
 
 ## Object Detector Performances
-
-
-## Visuals
-
-We present detailed statistics and comparisons to COCO dataset below. We use different normalization to give the instance ratios.   
+We trained popular object detectors on Mini COCO dataset. Below we display results.
 
 Object Detector performances on Mini COCO:
 
 ![obj_det_minicoco](/figures/minicoco_det.png)
 
 
-Object Detector performances on Mini COCO vs COCO:
+Object Detector performances Mini COCO vs COCO:
 
 ![obj_det_minicoco](/figures/minicoco_det_compare.png)
+
+## Visuals
+
+We present detailed statistics and comparisons to COCO dataset below. We use different normalization to give the instance ratios.   
+
 
 ### Total Annotations
 Total Annotations Normalized by Total Image Count:
