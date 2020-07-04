@@ -23,7 +23,7 @@ Object Detector performances. Models are trained on `minitrain` and evaluated on
 <img src="/figures/minicoco_det.png" width="500">
 
 
-Object Detector performances trained `minitrain` vs `train2017`. Models are evaluated on `val2017`.
+Object Detector performances trained on `minitrain` vs `train2017`. Models are evaluated on `val2017`.
 
 <img src="/figures/minicoco_det_compare.png" width="500">
 
