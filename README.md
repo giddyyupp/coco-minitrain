@@ -31,6 +31,6 @@ Object Detector performances `minitrain` vs `train2017`:
 
 Below figure compares object detection results on `train2017` and `minitrain`. This figure also shows the positive correlation between `train2017` and `minitrain` results. The Pearson correlation coefficients are **0.74** and **0.92** for COCO evaluation metrics *AP* and *AP50* respectively.
 
-<img src="/figures/pearson.png" width="600">
+<img src="/figures/pearson.png" width="500">
 
 More information on `minitrain` statistics could be found in [STATS.md](STATS.md)
