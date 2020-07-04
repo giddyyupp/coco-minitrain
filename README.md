@@ -12,7 +12,7 @@ We share **COCO** style JSON file, and **Pascal VOC** style CSV file.
 
 [Json](https://drive.google.com/open?id=1lezhgY4M_Ag13w0dEzQ7x_zQ_w0ohjin)
 
-[CSV](https://drive.google.com/open?id=1i12p23cXlqp1QrXjAD_vu467r4q67Mq9)
+[CSV](https://drive.google.com/open?id=1i12p23cXlqp1QrXjAD_vu467r4q67Mq9) [Class Labels](https://drive.google.com/file/d/1xmjxfdnFxZnD1IFpkpj2Yub9Wvv97-Kd/view?usp=sharing) 
 
 ## Object Detector Performances
 
@@ -31,8 +31,6 @@ Object Detector performances COCO minitrain vs COCO train2017:
 
 Below figure compares object detection results on *COCO train2017* and *COCO minitrain*. This figure also shows the positive correlation between *COCO train2017* and *COCO minitrain* results. The Pearson correlation coefficients are **0.74** and **0.92** for COCO evaluation metrics *AP* and *AP50* respectively.
 
-<img src="/figures/pearson.png" width="600"> 
+<img src="/figures/pearson.png" width="600">
 
 More information on COCO minitrain statistics could be found in [STATS.md](STATS.md)
-
-
