@@ -1,4 +1,4 @@
-# COCO minitrain
+# COCO ``minitrain``
 
 COCO minitrain dataset home page.
 
