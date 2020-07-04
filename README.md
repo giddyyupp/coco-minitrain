@@ -16,7 +16,7 @@ We share **COCO** style JSON file, and **Pascal VOC** style CSV file.
 
 ## Object Detector Performances
 
-We trained popular object detectors on Mini COCO dataset. We present object detection results in below figures.
+We trained popular object detectors on `minitrain` and evaluated them on `val2017` dataset. We present object detection results in below figures.
 
 Object Detector performances on `minitrain`:
 
@@ -30,8 +30,12 @@ Object Detector performances `minitrain` vs `train2017`:
 
 ## Correlation between `train2017` and `minitrain`
 
-Below figure compares object detection results on `train2017` and `minitrain`. This figure also shows the positive correlation between `train2017` and `minitrain` results. The Pearson correlation coefficients are **0.74** and **0.92** for COCO evaluation metrics *AP* and *AP50* respectively.
+Below figure compares object detection results on `train2017` and `minitrain`. This figure also shows the positive correlation between `train2017` and `minitrain` results. The Pearson correlation coefficients are **0.74** and **0.92** for COCO evaluation metrics *AP* and *AP50* respectively. This figure is based on the table above.
 
 <img src="/figures/pearson.png" width="500">
 
 More information on `minitrain` statistics could be found in [STATS.md](STATS.md)
+
+## Citation
+
+If you use COCO `minitrain` in your research, please cite as following:
