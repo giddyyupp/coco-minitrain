@@ -18,7 +18,7 @@ We share **COCO** style JSON file, and **Pascal VOC** style CSV file.
 
 We trained popular object detectors on `minitrain` and evaluated them on `val2017` dataset. We present object detection results in below figures.
 
-Object Detector performances on `minitrain`:
+Object Detector performances. Models are trained on `minitrain` and evaluated on `val2017`:
 
 <img src="/figures/minicoco_det.png" width="500">
 
