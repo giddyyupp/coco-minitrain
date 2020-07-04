@@ -34,3 +34,11 @@ Below figure compares object detection results on `train2017` and `minitrain`. T
 <img src="/figures/pearson.png" width="500">
 
 More information on `minitrain` statistics could be found in [STATS.md](STATS.md)
+
+
+| \\textbf\{Method\} | \\textit\{AP\}    | \\textit\{AP$\_\{50\}$\} | \\textit\{AP$\_\{75\}$\} | \\textit\{AP$\_S$\} | \\textit\{AP$\_M$\} | \\textit\{AP$\_L$\} |
+|--------------------|-------------------|--------------------------|--------------------------|---------------------|---------------------|---------------------|
+| Baseline           | 36\.2             | 54\.8                    | 38\.7                    | 16\.3               | 41\.6               | 52\.3               |
+| \+ Dilated Conv\.  | 36\.6             | 56\.1                    | 39\.2                    | 16\.7               | 42\.0               | 53\.6               |
+| \+ Voting Module   | \\textbf\{37\.3\} | \\textbf\{56\.6\}        | \\textbf\{39\.9\}        | \\textbf\{16\.8\}   |                     |
+| \\textbf\{42\.6\}  | \\textbf\{55\.2\} |
