@@ -30,7 +30,7 @@ Object Detector performances trained `minitrain` vs `train2017`. Models are eval
 
 ## Correlation between `train2017` and `minitrain`
 
-Below figure compares object detection results on `train2017` and `minitrain`. This figure also shows the positive correlation between `train2017` and `minitrain` results. The Pearson correlation coefficients are **0.74** and **0.92** for COCO evaluation metrics *AP* and *AP50* respectively. This figure is based on the table above.
+Below figure compares object detection results on `train2017` and `minitrain`. This figure also shows the positive correlation between `train2017` and `minitrain` results. The Pearson correlation coefficients are **0.74** and **0.92** for COCO evaluation metrics *AP* and *AP50* respectively. This figure is based on the table above. BaseModel corresponds HoughNet model with ResNet-101 backbone.
 
 <img src="/figures/pearson.png" width="500">
 
