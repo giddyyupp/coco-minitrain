@@ -33,6 +33,6 @@ Below figure compares object detection results on *COCO train2017* and *COCO min
 
 ![pearson](/figures/pearson.png)
 
-## More stats of COCO minitrain2017
+More information on COCO minitrain statistics could be found in [STATS.md](STATS.md)
 
-More info about COCO minitrain dataset is presented in [COCO minitrain](STATS.md)
+
