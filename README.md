@@ -2,7 +2,7 @@
 
 COCO `minitrain` dataset home page.
 
-It is a subset of the COCO train2017 dataset, and contains 25K images (about 20% of the COCO train2017 set) and  around 184K annotations across 80 object categories. We randomly sampled these images from the full set while preserving the following three quantities as much as possible:
+It is a subset of the COCO `train2017` dataset, and contains 25K images (about 20% of the `train2017` set) and  around 184K annotations across 80 object categories. We randomly sampled these images from the full set while preserving the following three quantities as much as possible:
 * proportion of object instances from each class,
 * overall ratios of small, medium and large objects,
 * per class ratios of small, medium and large objects.
