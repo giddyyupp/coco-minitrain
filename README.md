@@ -36,9 +36,19 @@ Below figure compares object detection results on `train2017` and `minitrain`. T
 More information on `minitrain` statistics could be found in [STATS.md](STATS.md)
 
 
-| \\textbf\{Method\} | \\textit\{AP\}    | \\textit\{AP$\_\{50\}$\} | \\textit\{AP$\_\{75\}$\} | \\textit\{AP$\_S$\} | \\textit\{AP$\_M$\} | \\textit\{AP$\_L$\} |
-|--------------------|-------------------|--------------------------|--------------------------|---------------------|---------------------|---------------------|
-| Baseline           | 36\.2             | 54\.8                    | 38\.7                    | 16\.3               | 41\.6               | 52\.3               |
-| \+ Dilated Conv\.  | 36\.6             | 56\.1                    | 39\.2                    | 16\.7               | 42\.0               | 53\.6               |
-| \+ Voting Module   | \\textbf\{37\.3\} | \\textbf\{56\.6\}        | \\textbf\{39\.9\}        | \\textbf\{16\.8\}   |                     |
-| \\textbf\{42\.6\}  | \\textbf\{55\.2\} |
+| \\multirow\{2\}\{\*\}\{Method\}       | \\multirow\{2\}\{\*\}\{Backbone\} | \\multirow\{2\}\{\*\}\{Scale\} | \\multicolumn\{3\}\{c\}\{MiniCOCO\} | \\multicolumn\{3\}\{c\}\{COCO\} |
+|---------------------------------------|-----------------------------------|--------------------------------|-------------------------------------|---------------------------------|
+|                                       |                                   |                                | \\textit\{AP\}                      | \\textit\{AP$\_\{50\}$\}        | \\textit\{AP$\_\{75\}$\} | \\textit\{AP\} | \\textit\{AP$\_\{50\}$\} | \\textit\{AP$\_\{75\}$\} |
+| \\textit\{Two\-stage detectors:\}     |                                   |                                |                                     |                                 |                          |                |                          |                          |
+| Faster R\-CNN~\\cite\{Detectron2018\} | ResNet\-50 \\textit\{w\} FPN      |
+|                                       | 800                               | 27\.7                          | 48\.8                               | 28\.4                           | 36\.7                    | 58\.4          | 39\.6                    |
+| Mask R\-CNN~\\cite\{Detectron2018\}   | ResNet\-50 \\textit\{w\} FPN      | 800                            | 28\.5                               | 49\.5                           | 29\.4                    | 37\.7          | 59\.2                    | 40\.9                    |
+| % Mask\-R\-50\-FPN                    | ResNet\-50 w FPN                  | 800                            | Seg                                 | 26\.7                           | 46\.0                    | 27\.4          | 10\.5                    | 28\.6                    | 40\.4 |
+| \\textit\{One\-stage detectors:\}     |                                   |                                |                                     |                                 |                          |                |                          |                          |
+| RetinaNet~\\cite\{Detectron2018\}     | ResNet\-50 \\textit\{w\} FPN      | 800                            | 25\.7                               | 43\.1                           | 26\.8                    | 35\.7          | 54\.7                    | 38\.5                    |
+| % YOLOv3                              | Darknet\-53                       | 608                            | 20\.6                               | 38\.2                           | 20\.3                    | 8\.7           | 21\.9                    | 28\.6                    |
+| CornerNet~\\cite\{cornernet\}         | Hourglass\-104                    | 511                            | 28\.4                               | 41\.8                           | 29\.5                    | 38\.4          | 53\.8                    | 40\.9                    |
+| ExtremeNet~\\cite\{extremenet\}       | Hourglass\-104                    | 511                            | 27\.3                               | 39\.4                           | 28\.9                    | 40\.3          | 55\.1                    | 43\.7                    |
+| HoughNet \(ours\)                     | ResNet\-101                       | 512                            | 23\.4                               | 40\.1                           | 23\.6                    | 34\.3          | 53\.6                    | 36\.6                    |
+| %  DCN                                | ResNet\-101 \\textit\{w\} DCN     | 512                            | 24\.7                               | 41\.3                           | 25\.5                    | 7\.6           | 26\.8                    | 38\.0                    |
+
