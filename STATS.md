@@ -9,18 +9,11 @@ Total Annotations Normalized by Total Image Count:
 
 <img src="/figures/comparison_bar_plot0_noperson.png" width="700"> <img src="/figures/comparison_bar_plot0_person.png" width="300" height="300">
 
-Person Annotations Normalized by Total Image Count:
-
-<img src="/figures/comparison_bar_plot0_person.png" width="500">
-
 
 Total Annotations Normalized by Total Annotation Count:
 
-![total 1](/figures/comparison_bar_plot1_noperson.png)
+<img src="/figures/comparison_bar_plot1_noperson.png" width="700"> <img src="/figures/comparison_bar_plot1_person.png" width="300" height="300">
 
-Person Annotations Normalized by Total Annotation Count:
-
-![total 1](/figures/comparison_bar_plot1_person.png)
 
 ### Small Annotations
 
