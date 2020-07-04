@@ -7,7 +7,7 @@ We present detailed statistics and comparisons to COCO dataset below. We use dif
 ### Total Annotations
 Total Annotations Normalized by Total Image Count:
 
-<img src="/figures/comparison_bar_plot0_noperson.png" width="700"> <img src="/figures/comparison_bar_plot0_person.png" width="200">
+<img src="/figures/comparison_bar_plot0_noperson.png" width="700"> <img src="/figures/comparison_bar_plot0_person.png" height="200">
 
 Person Annotations Normalized by Total Image Count:
 
