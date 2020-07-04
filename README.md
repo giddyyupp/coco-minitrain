@@ -1,6 +1,11 @@
 # COCO minitrain
 
-Mini COCO dataset home page.
+COCO minitrain dataset home page.
+
+It is a subset of the COCO train2017 351 dataset, contains 25K images (about 20% of the COCO train2017 set) and  around 184K ob jects across 80 ob ject categories. We randomly sampled these images from the full set while preserving the following three quantities as much as possible: 
+* proportion of object instances from each class, 
+* overall ratios  of small, medium and large objects, 
+* per class ratios of small, medium and large objects.
 
 ## Download
 We share COCO style json file, and Pascal style csv file.
