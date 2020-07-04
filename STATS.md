@@ -7,39 +7,25 @@ We present detailed statistics and comparisons to COCO dataset below. We use dif
 ### Total Annotations
 Total Annotations Normalized by Total Image Count:
 
-![total0](/figures/comparison_bar_plot0_noperson.png)
-
-Person Annotations Normalized by Total Image Count:
-
-![person0](/figures/comparison_bar_plot0_person.png)
+<img src="/figures/comparison_bar_plot0_noperson.png" width="600"> <img src="/figures/comparison_bar_plot0_person.png" width="300" height="300">
 
 
 Total Annotations Normalized by Total Annotation Count:
 
-![total 1](/figures/comparison_bar_plot1_noperson.png)
+<img src="/figures/comparison_bar_plot1_noperson.png" width="600"> <img src="/figures/comparison_bar_plot1_person.png" width="300" height="300">
 
-Person Annotations Normalized by Total Annotation Count:
-
-![total 1](/figures/comparison_bar_plot1_person.png)
 
 ### Small Annotations
 
 Small Annotations Normalized by Total Image Count:
 
-![total0](/figures/comparison_bar_plot0_small_objects_noperson.png)
+<img src="/figures/comparison_bar_plot0_small_objects_noperson.png" width="600"> <img src="/figures/comparison_bar_plot0_small_objects_person.png" width="300" height="300">
 
-Small Person Annotations Normalized by Total Image Count:
-
-![person0](/figures/comparison_bar_plot0_small_objects_person.png)
-
-
+ 
 Small Annotations Normalized by Total Annotation Count:
 
-![total 1](/figures/comparison_bar_plot1_small_objects_noperson.png)
+<img src="/figures/comparison_bar_plot1_small_objects_noperson.png" width="600"> <img src="/figures/comparison_bar_plot1_small_objects_person.png" width="300" height="300">
 
-Small Person Annotations Normalized by Total Annotation Count:
-
-![total 1](/figures/comparison_bar_plot1_small_objects_person.png)
 
 ### Medium Annotations
 
