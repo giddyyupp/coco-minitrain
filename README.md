@@ -29,9 +29,9 @@ Object Detector performances COCO minitrain2017 vs COCO train2017:
 
 ## Correlation between COCO train and COCO minitrain
 
-Below figure compares object detection results on *COCO train2017* and *COCO minitrain2017*. This figure also shows the positive correlation between *COCO train2017* and *COCO minitrain2017* results. The Pearson correlation coefficients are **0.74** and **0.92** for COCO evaluation metrics *AP* and *AP50* respectively.
+Below figure compares object detection results on *COCO train2017* and *COCO minitrain2017*. This figure also shows the positive correlation between *COCO train2017* and *COCO minitrain* results. The Pearson correlation coefficients are **0.74** and **0.92** for COCO evaluation metrics *AP* and *AP50* respectively.
 
-![pearson](/figures/pearson.png)
+<img src="/figures/pearson.png" width="600"> 
 
 More information on COCO minitrain statistics could be found in [STATS.md](STATS.md)
 
