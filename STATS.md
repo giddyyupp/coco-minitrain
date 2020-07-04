@@ -19,20 +19,13 @@ Total Annotations Normalized by Total Annotation Count:
 
 Small Annotations Normalized by Total Image Count:
 
-![total0](/figures/comparison_bar_plot0_small_objects_noperson.png)
+<img src="/figures/comparison_bar_plot0_small_objects_noperson.png" width="600"> <img src="/figures/comparison_bar_plot0_small_objects_person.png" width="300" height="300">
 
-Small Person Annotations Normalized by Total Image Count:
-
-![person0](/figures/comparison_bar_plot0_small_objects_person.png)
-
-
+ 
 Small Annotations Normalized by Total Annotation Count:
 
-![total 1](/figures/comparison_bar_plot1_small_objects_noperson.png)
+<img src="/figures/comparison_bar_plot1_small_objects_noperson.png" width="600"> <img src="/figures/comparison_bar_plot1_small_objects_person.png" width="300" height="300">
 
-Small Person Annotations Normalized by Total Annotation Count:
-
-![total 1](/figures/comparison_bar_plot1_small_objects_person.png)
 
 ### Medium Annotations
 
