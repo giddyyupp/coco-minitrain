@@ -1,4 +1,4 @@
-# Mini COCO
+# COCO minitrain
 
 Mini COCO dataset home page.
 
