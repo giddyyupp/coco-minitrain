@@ -36,8 +36,6 @@ We share **COCO** style JSON file, and **Pascal VOC** style CSV file.
 
 Object Detector performances. Models are trained on `minitrain` and evaluated on `val2017`:
 
-<img src="/figures/minicoco_det.png" width="500">
-
 | Method        | Backbone         | Scale | AP    | AP\_50 | AP\_75 | AP\_S | AP\_M | AP\_L |
 |---------------|------------------|-------|-------|--------|--------|-------|-------|-------|
 | Faster R\-CNN | ResNet\-50 w FPN | 800   | 27\.7 | 48\.8  | 28\.4  | 14\.7 | 29\.8 | 36\.4 |
