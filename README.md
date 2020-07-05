@@ -50,6 +50,15 @@ Object Detector performances trained on `minitrain` vs `train2017`. Models are e
 
 <img src="/figures/minicoco_det_compare.png" width="500">  
 
+| Method        | Backbone         | Scale | minitrain AP    | minitrain AP\_50 | minitrain AP\_75 | train2017 AP | train2017 AP\_50 | train2017 AP\_75 |
+|---------------|------------------|-------|-------|--------|--------|-------|-------|-------|
+| Faster R\-CNN | ResNet\-50 w FPN | 800   | 27\.7 | 48\.8  | 28\.4  | 36\.7 | 58\.4 | 39\.6 |
+| Mask R\-CNN   | ResNet\-50 w FPN | 800   | 28\.5 | 49\.5  | 29\.4  | 37\.7 | 59\.2 | 40\.9 |
+| RetinaNet     | ResNet\-50 w FPN | 800   | 25\.7 | 43\.1  | 26\.8  | 35\.7 | 54\.7 | 38\.5 |
+| CornerNet     | Hourglass\-104   | 511   | 28\.4 | 41\.8  | 29\.5  | 38\.4 | 53\.8 | 40\.9 |
+| ExtremeNet    | Hourglass\-104   | 511   | 27\.3 | 39\.4  | 28\.9  | 40\.3 | 55\.1 | 43\.7 |
+| HoughNet      | ResNet\-101      | 512   | 23\.4 | 40\.1  | 23\.6  | 34\.3 | 53\.6 | 36\.6 |
+
 
 Below figure compares object detection results on `train2017` and `minitrain`. This figure also shows the positive correlation between `train2017` and `minitrain` results. The Pearson correlation coefficients are **0.74** and **0.92** for COCO evaluation metrics *AP* and *AP50* respectively. This figure is based on the table above. *BaseModel* corresponds HoughNet model with ResNet-101 backbone.
 
