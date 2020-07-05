@@ -31,9 +31,8 @@ We share **COCO** style JSON file, and **Pascal VOC** style CSV file.
 
 [CSV](https://drive.google.com/open?id=1i12p23cXlqp1QrXjAD_vu467r4q67Mq9) [Class Labels](https://drive.google.com/file/d/1xmjxfdnFxZnD1IFpkpj2Yub9Wvv97-Kd/view?usp=sharing) 
 
-## Object Detector Performances
 
-We trained popular object detectors on `minitrain`. We present the results in below.
+## Performance correlation of `train2017` and `minitrain`
 
 Object Detector performances. Models are trained on `minitrain` and evaluated on `val2017`:
 
@@ -42,10 +41,8 @@ Object Detector performances. Models are trained on `minitrain` and evaluated on
 
 Object Detector performances trained on `minitrain` vs `train2017`. Models are evaluated on `val2017`.
 
-<img src="/figures/minicoco_det_compare.png" width="500">
+<img src="/figures/minicoco_det_compare.png" width="500">  
 
-
-## Performance correlation of `train2017` and `minitrain`
 
 Below figure compares object detection results on `train2017` and `minitrain`. This figure also shows the positive correlation between `train2017` and `minitrain` results. The Pearson correlation coefficients are **0.74** and **0.92** for COCO evaluation metrics *AP* and *AP50* respectively. This figure is based on the table above. *BaseModel* corresponds HoughNet model with ResNet-101 backbone.
 
