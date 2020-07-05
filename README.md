@@ -48,8 +48,6 @@ Object Detector performances. Models are trained on `minitrain` and evaluated on
 
 Object Detector performances trained on `minitrain` vs `train2017`. Models are evaluated on `val2017`.
 
-<img src="/figures/minicoco_det_compare.png" width="500">  
-
 | Method        | Backbone         | Scale | minitrain AP    | minitrain AP\_50 | minitrain AP\_75 | train2017 AP | train2017 AP\_50 | train2017 AP\_75 |
 |---------------|------------------|-------|-------|--------|--------|-------|-------|-------|
 | Faster R\-CNN | ResNet\-50 w FPN | 800   | 27\.7 | 48\.8  | 28\.4  | 36\.7 | 58\.4 | 39\.6 |
