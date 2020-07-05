@@ -37,6 +37,13 @@ We share **COCO** style JSON file, and **Pascal VOC** style CSV file.
 Object Detector performances. Models are trained on `minitrain` and evaluated on `val2017`:
 
 <img src="/figures/minicoco_det.png" width="500">
+| Method        | Backbone         | Scale | AP    | AP\_50 | AP\_75 | AP\_S | AP\_M | AP\_L |
+|---------------|------------------|-------|-------|--------|--------|-------|-------|-------|
+| Faster R\-CNN | ResNet\-50 w FPN | 800   | 27\.7 | 48\.8  | 28\.4  | 14\.7 | 29\.8 | 36\.4 |
+| Mask R\-CNN   | ResNet\-50 w FPN | 800   | 28\.5 | 49\.5  | 29\.4  | 14\.7 | 30\.7 | 37\.6 |
+| RetinaNet     | ResNet\-50 w FPN | 800   | 25\.7 | 43\.1  | 26\.8  | 12\.1 | 28\.6 | 34\.2 |
+| CornerNet     | Hourglass\-104   | 511   | 28\.4 | 41\.8  | 29\.5  | 11\.3 | 29\.6 | 39\.2 |
+| ExtremeNet    | Hourglass\-104   | 511   | 27\.3 | 39\.4  | 28\.9  | 12\.5 | 29\.6 | 38\.0 |
 
 
 Object Detector performances trained on `minitrain` vs `train2017`. Models are evaluated on `val2017`.
