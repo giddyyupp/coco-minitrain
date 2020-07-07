@@ -4,7 +4,7 @@ COCO `minitrain` is a mini training set (25K images ≈ 20% of `train2017`) for 
 
 We introduced COCO `minitrain` in our HoughNet paper in ECCV'2020. Please cite our paper, if you use COCO `minitrain` in your work. 
 
-N. Samet, S. Hicsonmez, E. Akbas, "HoughNet: Integrating near and long-range evidence for bottom-up object detection", ECCV 2020. [arXiV pre-print](buraya arxiv linki). 
+N. Samet, S. Hicsonmez, E. Akbas, "HoughNet: Integrating near and long-range evidence for bottom-up object detection", ECCV 2020. [arXiv 2007.02355](https://arxiv.org/abs/2007.02355). 
 
 ```
 @inproceedings{HoughNet, 
