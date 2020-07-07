@@ -9,9 +9,9 @@ N. Samet, S. Hicsonmez, E. Akbas, "HoughNet: Integrating near and long-range evi
 ```
 @inproceedings{HoughNet, 
   authors = {Nermin Samet and Samet Hicsonmez and Emre Akbas},
-  title = {HoughNet: Integrating near and long-range evidence for bottom-up object detection}, 
+  title = {HoughNet: Integrating near and long-range evidence for bottom-up object detection},   
+  booktitle = {European Conference on Computer Vision (ECCV)}, 
   year = {2020}, 
-  booktitle = {European Conference on Computer Vision (ECCV)}
 }
 ```
 
