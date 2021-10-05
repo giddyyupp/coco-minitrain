@@ -8,9 +8,9 @@ def main(args=None):
 	parser     = argparse.ArgumentParser(description='Simple training script for training a RetinaNet network.')
 
 	parser.add_argument('--dataset', help='Dataset type, must be one of csv or coco.', default="coco")
-	parser.add_argument('--csv_train', help='Dataset type, must be one of csv or coco.', default="mscoco_sampled_0.1131.csv")
-	parser.add_argument('--csv_classes', help='Dataset type, must be one of csv or coco.', default="coco_class_labels.csv")
-	parser.add_argument('--coco_path', help='Path to COCO directory',
+	parser.add_argument('--csv_train', help='Sampled minitrain csv file.', default="mscoco_sampled_0.1131.csv")
+	parser.add_argument('--csv_classes', help='COCO class labels csv file.', default="coco_class_labels.csv")
+	parser.add_argument('--coco_path', help='Path to COCO dataset directory',
 						default="/default/path/to/COCO2017/")
 
 	parser = parser.parse_args(args)
