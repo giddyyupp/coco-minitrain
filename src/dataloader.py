@@ -1,16 +1,11 @@
-from __future__ import print_function, division
 import sys
 import os
 import torch
 import numpy as np
-import random
 import csv
 import math
 
-from torch.utils.data import Dataset, DataLoader
-from torchvision import transforms, utils
-from torch.utils.data.sampler import Sampler
-
+from torch.utils.data import Dataset
 from pycocotools.coco import COCO
 
 import skimage.io
@@ -112,7 +107,6 @@ class CocoDataset(Dataset):
     def coco_label_to_label(self, coco_label):
         return self.coco_labels_inverse[coco_label]
 
-
     def label_to_coco_label(self, label):
         return self.coco_labels[label]
 
@@ -143,7 +137,7 @@ class CSVDataset(Dataset):
             with self._open_for_csv(self.class_list) as file:
                 self.classes = self.load_classes(csv.reader(file, delimiter=','))
         except ValueError as e:
-            raise_from(ValueError('invalid CSV class file: {}: {}'.format(self.class_list, e)), None)
+            raise(ValueError('invalid CSV class file: {}: {}'.format(self.class_list, e)), None)
 
         self.labels = {}
         for key, value in self.classes.items():
@@ -154,7 +148,7 @@ class CSVDataset(Dataset):
             with self._open_for_csv(self.train_file) as file:
                 self.image_data = self._read_annotations(csv.reader(file, delimiter=','), self.classes)
         except ValueError as e:
-            raise_from(ValueError('invalid CSV annotations file: {}: {}'.format(self.train_file, e)), None)
+            raise(ValueError('invalid CSV annotations file: {}: {}'.format(self.train_file, e)), None)
         self.image_names = list(self.image_data.keys())
 
     def _parse(self, value, function, fmt):
@@ -167,7 +161,7 @@ class CSVDataset(Dataset):
         try:
             return function(value)
         except ValueError as e:
-            raise_from(ValueError(fmt.format(e)), None)
+            raise(ValueError(fmt.format(e)), None)
 
     def _open_for_csv(self, path):
         """
@@ -180,7 +174,6 @@ class CSVDataset(Dataset):
         else:
             return open(path, 'r', newline='')
 
-
     def load_classes(self, csv_reader):
         result = {}
 
@@ -190,14 +183,13 @@ class CSVDataset(Dataset):
             try:
                 class_name, class_id = row
             except ValueError:
-                raise_from(ValueError('line {}: format should be \'class_name,class_id\''.format(line)), None)
+                raise(ValueError('line {}: format should be \'class_name,class_id\''.format(line)), None)
             class_id = self._parse(class_id, int, 'line {}: malformed class ID: {{}}'.format(line))
 
             if class_name in result:
                 raise ValueError('line {}: duplicate class name: \'{}\''.format(line, class_name))
             result[class_name] = class_id
         return result
-
 
     def __len__(self):
         return len(self.image_names)
@@ -260,7 +252,7 @@ class CSVDataset(Dataset):
             try:
                 img_file, x1, y1, x2, y2, class_name = row[:6]
             except ValueError:
-                raise_from(ValueError('line {}: format should be \'img_file,x1,y1,x2,y2,class_name\' or \'img_file,,,,,\''.format(line)), None)
+                raise(ValueError('line {}: format should be \'img_file,x1,y1,x2,y2,class_name\' or \'img_file,,,,,\''.format(line)), None)
 
             if img_file not in result:
                 result[img_file] = []
@@ -342,123 +334,3 @@ def collater(data):
 
     return {'img': padded_imgs, 'annot': annot_padded, 'scale': scales}
 
-class Resizer(object):
-    """Convert ndarrays in sample to Tensors."""
-
-    def __call__(self, sample, min_side=608, max_side=1024):
-        image, annots = sample['img'], sample['annot']
-
-        rows, cols, cns = image.shape
-
-        smallest_side = min(rows, cols)
-
-        # rescale the image so the smallest side is min_side
-        scale = min_side / smallest_side
-
-        # check if the largest side is now greater than max_side, which can happen
-        # when images have a large aspect ratio
-        largest_side = max(rows, cols)
-
-        if largest_side * scale > max_side:
-            scale = max_side / largest_side
-
-        # resize the image with the computed scale
-        image = skimage.transform.resize(image, (int(round(rows*scale)), int(round((cols*scale)))))
-        rows, cols, cns = image.shape
-
-        pad_w = 32 - rows%32
-        pad_h = 32 - cols%32
-
-        new_image = np.zeros((rows + pad_w, cols + pad_h, cns)).astype(np.float32)
-        new_image[:rows, :cols, :] = image.astype(np.float32)
-
-        annots[:, :4] *= scale
-
-        return {'img': torch.from_numpy(new_image), 'annot': torch.from_numpy(annots), 'scale': scale}
-
-
-class Augmenter(object):
-    """Convert ndarrays in sample to Tensors."""
-
-    def __call__(self, sample, flip_x=0.5):
-
-        if np.random.rand() < flip_x:
-            image, annots = sample['img'], sample['annot']
-            image = image[:, ::-1, :]
-
-            rows, cols, channels = image.shape
-
-            x1 = annots[:, 0].copy()
-            x2 = annots[:, 2].copy()
-            
-            x_tmp = x1.copy()
-
-            annots[:, 0] = cols - x2
-            annots[:, 2] = cols - x_tmp
-
-            sample = {'img': image, 'annot': annots}
-
-        return sample
-
-
-class Normalizer(object):
-
-    def __init__(self):
-        self.mean = np.array([[[0.485, 0.456, 0.406]]])
-        self.std = np.array([[[0.229, 0.224, 0.225]]])
-
-    def __call__(self, sample):
-
-        image, annots = sample['img'], sample['annot']
-
-        return {'img':((image.astype(np.float32)-self.mean)/self.std), 'annot': annots}
-
-class UnNormalizer(object):
-    def __init__(self, mean=None, std=None):
-        if mean == None:
-            self.mean = [0.485, 0.456, 0.406]
-        else:
-            self.mean = mean
-        if std == None:
-            self.std = [0.229, 0.224, 0.225]
-        else:
-            self.std = std
-
-    def __call__(self, tensor):
-        """
-        Args:
-            tensor (Tensor): Tensor image of size (C, H, W) to be normalized.
-        Returns:
-            Tensor: Normalized image.
-        """
-        for t, m, s in zip(tensor, self.mean, self.std):
-            t.mul_(s).add_(m)
-        return tensor
-
-
-class AspectRatioBasedSampler(Sampler):
-
-    def __init__(self, data_source, batch_size, drop_last):
-        self.data_source = data_source
-        self.batch_size = batch_size
-        self.drop_last = drop_last
-        self.groups = self.group_images()
-
-    def __iter__(self):
-        random.shuffle(self.groups)
-        for group in self.groups:
-            yield group
-
-    def __len__(self):
-        if self.drop_last:
-            return len(self.data_source) // self.batch_size
-        else:
-            return (len(self.data_source) + self.batch_size - 1) // self.batch_size
-
-    def group_images(self):
-        # determine the order of the images
-        order = list(range(len(self.data_source)))
-        order.sort(key=lambda x: self.data_source.image_aspect_ratio(x))
-
-        # divide into groups, one group = one batch
-        return [[order[x % len(order)] for x in range(i, i + self.batch_size)] for i in range(0, len(order), self.batch_size)]

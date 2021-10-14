@@ -35,6 +35,17 @@ We share **COCO** style JSON file, and **Pascal VOC** style CSV file.
 
 [Class Labels](https://drive.google.com/file/d/1xmjxfdnFxZnD1IFpkpj2Yub9Wvv97-Kd/view?usp=sharing) 
 
+
+## Usage
+If you want to sample according to your own needs (e.g. different number of images), run `src/sample_coco.py` with updated parameters.
+
+Below script runs minicoco sampling to curated 25000 images and saves annotations (both **bbox** and **segmentation**) to `instances_train2017_minicoco.json` file.
+
+```bash
+cd src
+python sample_coco.py --coco_path "path_to_your_coco_dataset" --save_file_name "instances_train2017_minicoco" --save_format "json" --sample_image_count 25000 --debug
+```
+
 ## Performance correlation of `train2017` and `minitrain`
 
 Object Detector performances. Models are trained on `minitrain` and evaluated on `val2017`:
