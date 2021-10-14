@@ -44,10 +44,9 @@ def main(args=None):
 		print(f"COCO object counts in each class for different sizes (S,M,L):\n{size_dict}")
 
 	# now sample!!
-	imgs_list = []
+	imgs_best_sample = {}
 	ratio_list = []
-	best_run_index = 0
-	best_diff = 10000
+	best_diff = 1_000_000
 	keys = []
 	# get all keys in coco train set, total image count!
 	for k, v in dataset_train.coco.imgToAnns.items():
@@ -62,8 +61,6 @@ def main(args=None):
 		# select first N images
 		for i in keys[:parser.sample_image_count]:
 			imgs[i] = dataset_train.coco.imgToAnns[i]
-
-		imgs_list.append(imgs)
 
 		# now check for category based annotations
 		# annot_sampled = np.zeros(90, int)
@@ -109,19 +106,17 @@ def main(args=None):
 
 		if diff < best_diff:
 			best_diff = diff
-			best_run_index = rr
+			imgs_best_sample = imgs
 
 		if parser.debug:
-			print(f"Best difference:{best_diff}, best run index: {best_run_index}")
-
-	# print imgs_list[best_run_index]
+			print(f"Best difference:{best_diff}")
 
 	if parser.save_format == 'csv':
 		# now write to csv file
 		csv_file = open(f"{parser.save_file_name}.csv", 'w')
 		write_str = ""
 
-		for k, v in imgs_list[best_run_index].items():
+		for k, v in imgs_best_sample.items():
 			f_name = dataset_train.coco.imgs[k]['file_name']
 			for ann in v:
 				bbox = ann['bbox']
@@ -143,7 +138,7 @@ def main(args=None):
 		mini_coco["licenses"] = dataset_train.coco.dataset['licenses']
 		mini_coco["categories"] = dataset_train.coco.dataset['categories']
 
-		for k, v in imgs_list[best_run_index].items():
+		for k, v in imgs_best_sample.items():
 			f_name = dataset_train.coco.imgs[k]['file_name']
 			im_id = int(f_name[:-4])
 			for ann in dataset_train.coco.imgToAnns[im_id]:
