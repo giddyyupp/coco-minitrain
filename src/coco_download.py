@@ -25,7 +25,6 @@ if not os.fsdecode(ann_file).endswith(".json"):
     assert "Only support COCO style JSON file"
 
 try:
-
     coco = COCO(os.fsdecode(ann_file))
     img_ids = list(coco.imgs.keys())
 
@@ -34,11 +33,14 @@ except FileNotFoundError:
 
 
 def download_images(id):
-    start_url = "http://images.cocodataset.org/train2017"
-    filename = "{0:0>12d}".format(id)
-    filename = filename + ".jpg"
-    full_url = os.path.join(start_url, filename)
-    wget.download(full_url, out=args.output_dir)
+    try:
+        start_url = "http://images.cocodataset.org/train2017"
+        filename = "{0:0>12d}".format(id)
+        filename = filename + ".jpg"
+        full_url = f"{start_url}/{filename}"
+        wget.download(full_url, out=args.output_dir)
+    except Exception as e:
+        print(f"The download exception is {e}", flush=True)
 
 
 with concurrent.futures.ThreadPoolExecutor() as executor:
