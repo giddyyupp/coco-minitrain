@@ -15,8 +15,8 @@ def main(args=None):
 	parser.add_argument('--coco_path', help='Path to COCO directory', default="/default/path/to/COCO2017/")
 	parser.add_argument('--save_file_name', help='Save file name', default="instances_train2017_minicoco")
 	parser.add_argument('--save_format', help='Save to json or csv', default="json")
-	parser.add_argument('--sample_image_count', help='How many images you want to sample', default=25_000)
-	parser.add_argument('--run_count', help='How many times you want to run sampling', type=int, default=10_000_000)
+	parser.add_argument('--sample_image_count', help='How many images you want to sample', type=int, default=25000)
+	parser.add_argument('--run_count', help='How many times you want to run sampling', type=int, default=10000000)
 	parser.add_argument('--debug', help='Print useful info', action='store_true')
 
 	parser = parser.parse_args(args)
