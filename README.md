@@ -37,7 +37,7 @@ We share **COCO** style JSON file, and **Pascal VOC** style CSV file.
 
 Download the whole 25k dataset:
 
-[coco_minitrain_25k.zip](https://drive.google.com/file/d/1HT7b3-tgkbVtV2o3pu-z34HTcOHcv5nW/view?usp=sharing)
+[coco_minitrain_25k.zip](https://drive.google.com/file/d/1t_l9uyBPfxSEzcajTk4a1TaQXzeRm9hw/view?usp=sharing)
 
 
 ## Usage
