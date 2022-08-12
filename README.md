@@ -35,6 +35,10 @@ We share **COCO** style JSON file, and **Pascal VOC** style CSV file.
 
 [Class Labels](https://drive.google.com/file/d/1xmjxfdnFxZnD1IFpkpj2Yub9Wvv97-Kd/view?usp=sharing) 
 
+Download the whole 25k dataset:
+
+[coco_minitrain_25k.zip](https://drive.google.com/file/d/1HT7b3-tgkbVtV2o3pu-z34HTcOHcv5nW/view?usp=sharing)
+
 
 ## Usage
 If you want to sample according to your own needs (e.g. different number of images), run `src/sample_coco.py` with updated parameters.
