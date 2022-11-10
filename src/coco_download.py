@@ -20,7 +20,10 @@ args = parser.parse_args()
 annotation = args.annotation
 root = pathlib.Path().absolute()
 ann_file = root / annotation
-assert pathlib.Path(args.output_dir).is_dir(), "not valid dir"
+# assert pathlib.Path(args.output_dir).is_dir(), "not valid dir"
+out_p = pathlib.Path(args.output_dir)
+out_p.mkdir(parents=True, exist_ok=True)
+
 if not os.fsdecode(ann_file).endswith(".json"):
     assert "Only support COCO style JSON file"
 
