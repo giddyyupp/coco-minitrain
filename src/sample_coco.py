@@ -1,28 +1,16 @@
 import json
 import argparse
 from random import shuffle
+from tqdm import tqdm
 
 from dataloader import CocoDataset
-from sampler_utils import get_coco_object_size_info, get_coco_class_object_counts
+from sampler_utils import get_coco_object_size_info, get_coco_class_object_counts, get_coco_object_size_info_kp
 
 # default area ranges defined in coco
 areaRng = [32 ** 2, 96 ** 2, 1e5 ** 2]
 
 
-def main(args=None):
-	parser = argparse.ArgumentParser(description='Mini COCO Sampling Script')
-
-	parser.add_argument('--coco_path', help='Path to COCO directory', default="/default/path/to/COCO2017/")
-	parser.add_argument('--save_file_name', help='Save file name', default="instances_train2017_minicoco")
-	parser.add_argument('--save_format', help='Save to json or csv', default="json")
-	parser.add_argument('--sample_image_count', help='How many images you want to sample', type=int, default=25000)
-	parser.add_argument('--run_count', help='How many times you want to run sampling', type=int, default=10000000)
-	parser.add_argument('--debug', help='Print useful info', action='store_true')
-
-	parser = parser.parse_args(args)
-
-	dataset_train = CocoDataset(parser.coco_path, set_name='train2017')
-
+def sampling(dataset_train, parser):
 	# get coco class based object counts
 	annot_dict = get_coco_class_object_counts(dataset_train)
 	if parser.debug:
@@ -52,7 +40,7 @@ def main(args=None):
 	for k, v in dataset_train.coco.imgToAnns.items():
 		keys.append(k)
 
-	for rr in range(parser.run_count):
+	for rr in tqdm(range(parser.run_count)):
 		imgs = {}
 
 		# shuffle keys
@@ -111,10 +99,120 @@ def main(args=None):
 		if parser.debug:
 			print(f"Best difference:{best_diff}")
 
+	return imgs_best_sample
+
+
+def sampling_kp(dataset_train, parser):
+	# get coco class based object counts
+	annot_dict = get_coco_class_object_counts(dataset_train)
+	if parser.debug:
+		print(f"COCO object counts in each class:\n{annot_dict}")
+
+	# here extract object sizes.
+	size_dict = get_coco_object_size_info_kp(dataset_train)
+	if parser.debug:
+		print(f"COCO object counts in each class for different sizes (S,M,L):\n{size_dict}")
+
+	# now sample!!
+	imgs_best_sample = {}
+	ratio_list = []
+	best_diff = 1_000_000
+	keys = []
+	# get all keys in coco train set, total image count!
+	for k, v in dataset_train.coco.imgToAnns.items():
+		keys.append(k)
+
+	for rr in tqdm(range(parser.run_count)):
+		imgs = {}
+
+		# shuffle keys
+		shuffle(keys)
+
+		# select first N images
+		for i in keys[:parser.sample_image_count]:
+			imgs[i] = dataset_train.coco.imgToAnns[i]
+
+		# now check for category based annotations
+		# annot_sampled = np.zeros(90, int)
+		annot_sampled = {}
+		for k, v in imgs.items():
+			for it in v:
+				area = it['bbox'][2] * it['bbox'][3]
+				cat = it['category_id']
+				num_kp = it['num_keypoints']
+				if num_kp == 0:  # if there is no KP annots then no need to include
+					continue
+				if area < areaRng[0]:
+					kk = str(cat) + "_S"
+				elif area < areaRng[1]:
+					kk = str(cat) + "_M"
+				else:
+					kk = str(cat) + "_L"
+
+				kk += f"_{num_kp}"
+
+				if kk in annot_sampled:
+					annot_sampled[kk] += 1
+				else:
+					annot_sampled[kk] = 1
+		if parser.debug:
+			print(f"Sampled Annotations dict:\n {annot_sampled}")
+
+		# calculate ratios
+		ratios_obj_count = {}
+		# ratios_obj_size = {}
+
+		failed_run = False
+		for k, v in size_dict.items():
+			if not k in annot_sampled:
+				failed_run = True
+				break
+
+			ratios_obj_count[k] = annot_sampled[k] / float(v)
+		if failed_run:
+			continue
+
+		ratio_list.append(ratios_obj_count)
+
+		min_ratio = min(ratios_obj_count.values())
+		max_ratio = max(ratios_obj_count.values())
+
+		diff = max_ratio - min_ratio
+
+		if diff < best_diff:
+			best_diff = diff
+			imgs_best_sample = imgs
+
+		if parser.debug:
+			print(f"Best difference:{best_diff}")
+
+	return imgs_best_sample
+
+
+def main(args=None):
+	parser = argparse.ArgumentParser(description='Mini COCO Sampling Script')
+
+	parser.add_argument('--coco_path', help='Path to COCO directory',
+						default=r"C:\DATA\Ubuntu18\CODE\Doktora\MiniCoco\coco")
+	parser.add_argument('--save_file_name', help='Save file name', default="person_keypoints_train2017_minicoco")
+	parser.add_argument('--save_format', help='Save to json or csv', default="json")
+	parser.add_argument('--sample_image_count', help='How many images you want to sample', type=int, default=15000)
+	parser.add_argument('--run_count', help='How many times you want to run sampling', type=int, default=200000)
+	parser.add_argument('--debug', help='Print useful info', action='store_true')
+	parser.add_argument('--sample_kp', help='Sample Keypoints', action='store_true')
+
+	parser = parser.parse_args(args)
+
+	dataset_train = CocoDataset(parser.coco_path, set_name='train2017', sample_kp=parser.sample_kp)
+
+	if parser.sample_kp:
+		imgs_best_sample = sampling_kp(dataset_train, parser)
+	else:
+		imgs_best_sample = sampling(dataset_train, parser)
+
 	if parser.save_format == 'csv':
 		# now write to csv file
 		csv_file = open(f"{parser.save_file_name}.csv", 'w')
-		write_str = ""
 
 		for k, v in imgs_best_sample.items():
 			f_name = dataset_train.coco.imgs[k]['file_name']
