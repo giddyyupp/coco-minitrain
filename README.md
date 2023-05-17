@@ -43,9 +43,9 @@ We share **COCO** style JSON file, and **Pascal VOC** style CSV file.
 
 [Class Labels](https://drive.google.com/file/d/1xmjxfdnFxZnD1IFpkpj2Yub9Wvv97-Kd/view?usp=sharing) 
 
-Download the whole 25k dataset:
+Download the whole 25k dataset directly.
 
-[coco_minitrain_25k.zip](https://drive.google.com/file/d/1t_l9uyBPfxSEzcajTk4a1TaQXzeRm9hw/view?usp=sharing)
+[coco_minitrain_25k.zip](https://ln5.sync.com/dl/0324da1d0/rmi7abjx-2dj4ktii-d9jcwgc5-s7fwwrb7) (maintained by @[bryanbocao](https://github.com/bryanbocao))
 
 ### Keypoint Detection
 We share **COCO** style JSON file.
